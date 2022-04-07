@@ -2,7 +2,7 @@
 /**
  * main - entry point
  *
- * return: 0 after printing the function
+ * Return: Alwyse 0 (Success)
  */
 int main(void)
 {
