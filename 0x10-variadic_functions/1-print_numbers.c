@@ -1,32 +1,32 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
+#include "variadic_functions.h"
+
 /**
- *print_numbers - prints numbers followed by newline
- *
- *@separator:string to be printed b2n no.
- *
- *@n:no. of elements
- *
- *Return:void
- */
+* print_numbers - prints numbers, followed by a new line.
+* @separator: delimiter
+* @n: n args
+* Return: void
+*/
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	va_list va;
-	unsigned int i = 0;
+	va_list argument1;
+	unsigned int i;
 
+	va_start(argument1, n);
 	if (n != 0)
 	{
-		va_start(va, n);
-		for (i = 0; i <= (n - 1); i++)
+		for (i = 0; (i < n - 1); i++)
 		{
-			printf("%d", va_arg(va, int));
-			if (i < (n - 1) && separator != NULL)
+			if (separator != NULL)
 			{
-				printf("%s", separator);
+				printf("%d%s", va_arg(argument1, int), separator);
+			}
+			else
+			{
+				printf("%d", va_arg(argument1, int));
 			}
 		}
+		printf("%d", va_arg(argument1, int));
+		va_end(argument1);
 	}
 	printf("\n");
-	va_end(va);
 }
